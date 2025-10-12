@@ -1,13 +1,13 @@
 import tkinter as tk
 from Utilidades.Centralizar_janela import centralizar_janela
 from Utilidades.Verificar_login import verificar_login
-from Janela_contas import janela_contas
+from Janelas.Janela_contas import janela_contas
 from Estilos.estilos import *
 
 # -----Botão-----
 def tentar_login(entrada_usuario: tk.Entry, entrada_senha: tk.Entry, janela: tk.Tk):
-    usuario_dado = entrada_usuario.get()
-    senha_dada = entrada_senha.get()
+    usuario_dado = entrada_usuario.get().strip()
+    senha_dada = entrada_senha.get().strip()
 
     if verificar_login(usuario_dado, senha_dada):
         janela.destroy()
@@ -39,8 +39,7 @@ def criar_widgets_login(janela: tk.Tk):
     entrada_senha.pack(pady=(0, 20))
 
     # Botão Entrar
-    botao = tk.Button(frame, text="Entrar", font=fonte_texto, bg=cor_verde1, fg="white",
-                      activebackground=cor_verde2, width=15,
+    botao = tk.Button(frame, text="Entrar", font=fonte_texto, bg=cor_verde1, fg="white", activebackground=cor_verde2, width=15,
                       command=lambda: tentar_login(entrada_usuario, entrada_senha, janela))
     botao.pack(pady=(0, 10))
 
