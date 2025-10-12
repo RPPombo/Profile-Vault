@@ -14,7 +14,7 @@ def tentar_login(entrada_usuario: tk.Entry, entrada_senha: tk.Entry, janela: tk.
         janela_contas(usuario_dado)
     else:
         aviso_login["text"] = "Usuário e/ou Senha incorreto(s)!"
-        aviso_login["fg"] = "red"
+        aviso_login["fg"] = cor_vermelho1
 
 
 # -----Elementos da janela-----
