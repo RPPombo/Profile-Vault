@@ -1,10 +1,12 @@
 import tkinter as tk
 from Utilidades.Centralizar_janela import centralizar_janela
 from Utilidades.Verificar_login import verificar_login
+from Utilidades.Salvar_json import salvar_json
 from Janelas.Janela_contas import janela_contas
+from Janelas.Janela_reset_senha import janela_resetar_senha
 from Estilos.estilos import *
 
-# -----Botão-----
+# -----Botões-----
 def tentar_login(entrada_usuario: tk.Entry, entrada_senha: tk.Entry, janela: tk.Tk):
     usuario_dado = entrada_usuario.get().strip()
     senha_dada = entrada_senha.get().strip()
@@ -15,7 +17,6 @@ def tentar_login(entrada_usuario: tk.Entry, entrada_senha: tk.Entry, janela: tk.
     else:
         aviso_login["text"] = "Usuário e/ou Senha incorreto(s)!"
         aviso_login["fg"] = cor_vermelho1
-
 
 # -----Elementos da janela-----
 def criar_widgets_login(janela: tk.Tk):
@@ -39,9 +40,11 @@ def criar_widgets_login(janela: tk.Tk):
     entrada_senha.pack(pady=(0, 20))
 
     # Botão Entrar
-    botao = tk.Button(frame, text="Entrar", font=fonte_texto, bg=cor_verde1, fg="white", activebackground=cor_verde2, width=15,
-                      command=lambda: tentar_login(entrada_usuario, entrada_senha, janela))
-    botao.pack(pady=(0, 10))
+    tk.Button(frame, text="Entrar", font=fonte_texto, bg=cor_verde1, fg=cor_branco1, activebackground=cor_verde2, width=15,
+              command=lambda: tentar_login(entrada_usuario, entrada_senha, janela)).pack(pady=(0, 10))
+
+    tk.Button(frame, text="Esqueci a senha", font=fonte_texto, bg=cor_verde1, fg=cor_branco1, activebackground=cor_verde2,width=15,
+              command=lambda: janela_resetar_senha(janela)).pack(pady=(0,10))
 
     # Label de aviso de login
     global aviso_login
