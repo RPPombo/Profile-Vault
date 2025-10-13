@@ -4,6 +4,7 @@ from Utilidades.Verificar_login import verificar_login
 from Utilidades.Salvar_json import salvar_json
 from Janelas.Janela_contas import janela_contas
 from Janelas.Janela_reset_senha import janela_resetar_senha
+from Classes.Usuario import Usuario
 from Estilos.estilos import *
 
 # -----Botões-----
@@ -13,7 +14,8 @@ def tentar_login(entrada_usuario: tk.Entry, entrada_senha: tk.Entry, janela: tk.
 
     if verificar_login(usuario_dado, senha_dada):
         janela.destroy()
-        janela_contas(usuario_dado)
+        usuario = Usuario(usuario_dado)
+        janela_contas(usuario)
     else:
         aviso_login["text"] = "Usuário e/ou Senha incorreto(s)!"
         aviso_login["fg"] = cor_vermelho1

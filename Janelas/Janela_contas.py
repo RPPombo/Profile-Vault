@@ -1,6 +1,7 @@
 import tkinter as tk
 import pandas as pd
 from Utilidades.Centralizar_janela import centralizar_janela
+from Classes.Usuario import Usuario
 from Estilos.estilos import *
 
 # -----Botões-----
@@ -87,7 +88,7 @@ def carregar_frame_esquerda(janela: tk.Tk, df: pd.DataFrame):
         widget.destroy()
 
     # Conta acessada do app
-    tk.Label(janela.frame_esquerda, text=f"Conta:{usuario_acessado}", font=fonte_titulo, bg=cor_branco2).pack(pady=20)
+    tk.Label(janela.frame_esquerda, text=f"Conta:{usuario_acessado.nome}", font=fonte_titulo, bg=cor_branco2).pack(pady=20)
 
     # Botões de ações
     tk.Button(janela.frame_esquerda, text="Adicionar Perfil", font=fonte_texto, bg=cor_verde1, activebackground= cor_verde2, width=15,
@@ -112,11 +113,11 @@ def criar_frames_vault(janela: tk.Tk):
     janela.frame_direita.grid(column=1, row=0, sticky="nsew")
     
 # -----Criar janela-----
-def janela_contas(usuario: str):
+def janela_contas(usuario: Usuario):
     global usuario_acessado
     usuario_acessado = usuario
 
-    df_usuario = pd.read_json(f"./Dados/Contas/{usuario}.json")
+    df_usuario = pd.read_json(usuario_acessado.arquivo)
 
     janela = tk.Tk()
     janela.title("Profile Vault")
