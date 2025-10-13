@@ -3,6 +3,7 @@ from Utilidades.Centralizar_janela import centralizar_janela
 from Utilidades.Verificar_login import verificar_login
 from Janelas.Janela_contas import janela_contas
 from Janelas.Janela_reset_senha import janela_resetar_senha
+from Janelas.Janela_criar_usuario import janela_criar_usuario
 from Classes.Usuario import Usuario
 from Estilos.estilos import *
 
@@ -40,12 +41,15 @@ def criar_widgets_login(janela: tk.Tk):
     entrada_senha = tk.Entry(frame, show="*", width=25, font=fonte_texto, bd=2, relief="groove")
     entrada_senha.pack(pady=(0, 20))
 
-    # Botão Entrar
+    # Botões
     tk.Button(frame, text="Entrar", font=fonte_texto, bg=cor_verde1, fg=cor_branco1, activebackground=cor_verde2, width=15,
               command=lambda: tentar_login(entrada_usuario, entrada_senha, janela)).pack(pady=(0, 10))
 
     tk.Button(frame, text="Esqueci a senha", font=fonte_texto, bg=cor_verde1, fg=cor_branco1, activebackground=cor_verde2,width=15,
               command=lambda: janela_resetar_senha(janela)).pack(pady=(0,10))
+    
+    tk.Button(frame, text="Criar Usuário", font=fonte_texto, bg=cor_verde1, fg=cor_branco1, activebackground=cor_verde2,width=15,
+              command=lambda: janela_criar_usuario(janela)).pack(pady=(0,10))
 
     # Label de aviso de login
     global aviso_login

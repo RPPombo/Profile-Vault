@@ -58,7 +58,7 @@ def editar_perfil(janela: tk.Tk, df: pd.DataFrame):
                 tk.Label(janela_edicao, text="Editar Perfil:", font=fonte_titulo, bg=cor_branco2).pack(pady=20)
 
                 for campo in df.columns:
-                    tk.Label(janela_edicao, text=f"{campo}:", font=fonte_texto, bg=cor_branco2).pack(pady=5)
+                    tk.Label(janela_edicao, text=f"{campo.capitalize()}:", font=fonte_texto, bg=cor_branco2).pack(pady=5)
                     entrada = tk.Entry(janela_edicao, width=25, font=fonte_texto, bg=cor_branco2)
                     entrada.pack(pady=5)
                     entrada.insert(0, str(df.at[indice, campo]))
