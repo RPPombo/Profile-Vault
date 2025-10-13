@@ -6,7 +6,7 @@ class Usuario:
         self.__nome = nome
         
         df_logins = pd.read_json("./Dados/Logins.json")
-        usuario = df_logins[df_logins["usuario"] == nome].iloc[0]
+        usuario = df_logins[df_logins["usuário"] == nome].iloc[0]
         
         self.__email = usuario["email"]
         self.__senha = usuario["senha"]
@@ -33,7 +33,7 @@ class Usuario:
         self.__senha = senha_nova
         df_logins = pd.read_json("./Dados/Logins.json")
 
-        df_logins.loc[df_logins["usuario"] == self.__nome, 'senha'] = senha_nova
+        df_logins.loc[df_logins["usuário"] == self.__nome, 'senha'] = senha_nova
 
         salvar_json("./Dados/Logins.json", df_logins)
 
@@ -47,7 +47,7 @@ class Usuario:
         self.__celular = celular_novo
         df_logins = pd.read_json("./Dados/Logins.json")
 
-        df_logins.loc[df_logins["usuario"] == self.__nome, 'celular'] = celular_novo
+        df_logins.loc[df_logins["usuário"] == self.__nome, 'celular'] = celular_novo
 
         salvar_json("./Dados/Logins.json", df_logins)
 
