@@ -1,7 +1,6 @@
 import tkinter as tk
 from Utilidades.Centralizar_janela import centralizar_janela
 from Utilidades.Verificar_login import verificar_login
-from Utilidades.Salvar_json import salvar_json
 from Janelas.Janela_contas import janela_contas
 from Janelas.Janela_reset_senha import janela_resetar_senha
 from Classes.Usuario import Usuario

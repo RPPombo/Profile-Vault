@@ -1,0 +1,18 @@
+[
+    {
+        "conta": "exemplo 1",
+        "usuario": "exemplo.user",
+        "email": "email1@exemplo.com",
+        "senha": "123456",
+        "2 fatores": "celular",
+        "site": "https://exemplo1.com.br"
+    },
+    {
+        "conta": "exemplo 2",
+        "usuario": "exemplo.user",
+        "email": "email2@exemplo.com",
+        "senha": "654321",
+        "2 fatores": "",
+        "site": "https://exemplo2.com.br"
+    }
+]

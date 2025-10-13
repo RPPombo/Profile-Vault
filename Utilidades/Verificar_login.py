@@ -7,7 +7,7 @@ def verificar_login(usuario_dado: str, senha_dada: str) -> bool:
 
         if usuario_dado in usuarios["usuario"].values:
             linha = usuarios[usuarios["usuario"] == usuario_dado]
-            senha_correta = linha["senha"].iloc[0]
+            senha_correta = str(linha["senha"].iloc[0])
 
             return senha_correta == senha_dada
         else:

@@ -1,32 +1,8 @@
 [
     {
-        "usuario": "Maria123",
-        "email": "maria123@gmail.com",
+        "usuario": "Exemplo",
+        "email": "email@exemplo.com",
         "senha": "123456",
-        "celular": "11 95087-6690"
-    },
-    {
-        "usuario": "JoaoSilva",
-        "email": "joaosilva@hotmail.com",
-        "senha": "senha789",
-        "celular": "11 95087-6690"
-    },
-    {
-        "usuario": "AnaCosta",
-        "email": "anacosta@yahoo.com",
-        "senha": "abc12345",
-        "celular": "11 95087-6690"
-    },
-    {
-        "usuario": "PedroSantos",
-        "email": "pedrosantos@gmail.com",
-        "senha": "p@ssword",
-        "celular": "11 95087-6690"
-    },
-    {
-        "usuario": "LuizaFerreira",
-        "email": "luiza.ferreira@outlook.com",
-        "senha": "luiza2024",
-        "celular": "11 95087-6690"
+        "celular": "xx xxxxx-xxxx"
     }
 ]
