@@ -36,6 +36,11 @@ def janela_criar_usuario(janela: tk.Tk):
 
             salvar_json("./Dados/Logins.json", df)
 
+            with open(f"./Dados/Contas/{entradas["usuário"].get()}.json", mode="x") as arq:
+                arq.write('''[
+                          {}
+                          ]''')
+
             janela_criacao.destroy()
 
     tk.Button(janela_criacao, text="Criar", font=fonte_texto, bg=cor_verde1, fg=cor_branco1, activebackground=cor_verde2,width=15,
