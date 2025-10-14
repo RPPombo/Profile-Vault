@@ -117,7 +117,10 @@ def janela_contas(usuario: Usuario):
     global usuario_acessado
     usuario_acessado = usuario
 
+    colunas = ["conta", "usuário", "email", "senha", "autenticação 2 fatores", "site"]
+
     df_usuario = pd.read_json(usuario_acessado.arquivo)
+    df_usuario = pd.DataFrame(columns=colunas)
 
     janela = tk.Tk()
     janela.title("Profile Vault")

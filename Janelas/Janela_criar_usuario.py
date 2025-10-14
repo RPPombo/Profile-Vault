@@ -37,9 +37,7 @@ def janela_criar_usuario(janela: tk.Tk):
             salvar_json("./Dados/Logins.json", df)
 
             with open(f"./Dados/Contas/{entradas["usuário"].get()}.json", mode="x") as arq:
-                arq.write('''[
-                          {}
-                          ]''')
+                arq.write('''[]''')
 
             janela_criacao.destroy()
 

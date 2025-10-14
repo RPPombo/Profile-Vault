@@ -20,7 +20,7 @@ if not os.path.exists("./Dados/Logins.json"):
 if not os.path.exists("./Dados/Contas/Exemplo.json"):
     with open(file="./Dados/Contas/Exemplo.json", mode="w+", encoding="UTF-8") as arq:
         arq.write('''[
-    {"conta": "exemplo 1","usuário": "exemplo.user","email": "email1@exemplo.com","senha": "123456","2 fatores": "celular","site": "https://exemplo1.com.br"}
+    {"conta": "exemplo 1","usuário": "exemplo.user","email": "email1@exemplo.com","senha": "123456","autenticação 2 fatores": "celular","site": "https://exemplo1.com.br"}
 ]''')
 
 janela_login()
