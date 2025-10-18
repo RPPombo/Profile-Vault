@@ -2,6 +2,7 @@ import tkinter as tk
 import pandas as pd
 import re
 from Utilidades.Centralizar_janela import centralizar_janela
+from Utilidades.Salvar_json import salvar_json
 from Classes.Usuario import Usuario
 from Estilos.estilos import *
 
@@ -26,6 +27,7 @@ def adicionar_perfil(janela: tk.Tk, df: pd.DataFrame):
     def adicionar():
         nova_linha = {chave: entradas[chave].get() for chave in entradas}
         df.loc[len(df)] = nova_linha
+        salvar_json(usuario_acessado.arquivo, df)
         carregar_frame_direita(janela, df)
         janela_adicao.destroy()
 
@@ -68,7 +70,8 @@ def editar_perfil(janela: tk.Tk, df: pd.DataFrame):
                 def editar():
                     for campo, entry in entradas.items():
                         df.at[indice, campo] = entry.get()
-
+                        
+                    salvar_json(usuario_acessado.arquivo, df)
                     carregar_frame_direita(janela, df)
                     janela_edicao.destroy()
 
