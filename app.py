@@ -14,7 +14,7 @@ if not os.path.exists("./Dados/Contas"):
 if not os.path.exists("./Dados/Logins.json"):
     with open(file="./Dados/Logins.json", mode="w+", encoding="UTF-8") as arq:
         arq.write('''[
-    { "usuário": "Exemplo","email": "email@exemplo.com","senha": "123456","celular": "xx xxxxx-xxxx"}
+    { "usuário": "Exemplo","email": "email@exemplo.com","senha": "123456","celular": "xx xxxxx-xxxx","tema": "Dark"}
 ]''')
 
 if not os.path.exists("./Dados/Contas/Exemplo.json"):
