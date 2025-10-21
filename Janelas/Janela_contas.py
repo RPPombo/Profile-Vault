@@ -3,6 +3,7 @@ import pandas as pd
 import re
 from Utilidades.Centralizar_janela import centralizar_janela
 from Utilidades.Salvar_json import salvar_json
+from Utilidades.Criar_scrollbar import criar_scrollbar
 from Classes.Usuario import Usuario
 from Estilos.estilos import *
 
@@ -199,17 +200,42 @@ def carregar_frame_direita(janela: tk.Tk, df: pd.DataFrame):
     for widget in janela.frame_direita.winfo_children():
         widget.destroy()
 
-    for coluna in df.columns:
-        tk.Label(janela.frame_direita, text=df[coluna], font= tema["fonte_texto"]).pack(pady=5)
+    frame_interno = criar_scrollbar(janela.frame_direita)
+    nomes_colunas = ["Index", "Conta", "Usuário", "Email", "Senha", "Autenticação 2 fatores", "Site"]
+    colunas = []
 
+    # Permitir expansão das colunas
+    for i in range(len(nomes_colunas)):
+        frame_interno.grid_columnconfigure(i, weight=1)
+
+    # Criar frames de colunas
+    for i, nome in enumerate(nomes_colunas):
+        coluna_frame = tk.Frame(frame_interno, width=200, bg=tema["cor_bg1"])
+        coluna_frame.grid(column=i, row=0, sticky="nsew", padx=2, pady=2)
+        colunas.append(coluna_frame)
+        tk.Label(coluna_frame, text=nome, font=tema["fonte_texto"], bg=tema["cor_bg2"]).pack(pady=10)
+
+    # Preencher dados
+    if df is not None and not df.empty:
+        for i, linha in df.iterrows():
+            for coluna_frame, nome_coluna in zip(colunas, nomes_colunas):
+                valor = str(i) if nome_coluna.lower() == "index" else str(linha.get(nome_coluna.lower(), ""))
+                tk.Label(coluna_frame, text=valor, font=tema["fonte_texto"], bg=tema["cor_bg2"]).pack(pady=5)
+
+    
 # -----Elementos da janela-----
 def criar_frames_vault(janela: tk.Tk):
-    janela.frame_esquerda = tk.Frame(janela, width=300)
-    janela.frame_esquerda.grid(column=0, row= 0, sticky="nsew")
+    # Permitir expansão dos frames
+    janela.grid_rowconfigure(0, weight=1)
+    janela.grid_columnconfigure(0, weight=1)
+    janela.grid_columnconfigure(1, weight=3)
 
-    janela.frame_direita = tk.Frame(janela, width=700)
+    janela.frame_esquerda = tk.Frame(janela, width=300)
+    janela.frame_esquerda.grid(column=0, row=0, sticky="nsew")
+
+    janela.frame_direita = tk.Frame(janela, width=1400)
     janela.frame_direita.grid(column=1, row=0, sticky="nsew")
-    
+
 # -----Criar janela-----
 def janela_contas(usuario: Usuario):
     global usuario_acessado
@@ -224,7 +250,7 @@ def janela_contas(usuario: Usuario):
 
     janela = tk.Tk()
     janela.title("Profile Vault")
-    centralizar_janela(janela, 1000, 800)
+    centralizar_janela(janela, 1700, 800)
     global tema
     tema = carregar_tema(usuario_acessado.tema)
     criar_frames_vault(janela)
